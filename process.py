@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+from dotenv import load_dotenv
 from scipy import stats
 from IPython.display import Image
 from langchain.utilities import SQLDatabase
@@ -11,6 +12,7 @@ from langchain.agents.agent_toolkits import SQLDatabaseToolkit
 from langchain_openai import OpenAI
 from langchain.agents import create_sql_agent
 import sqlite3
+load_dotenv(dotenv_path='/workspace/EDA_bot/.env')
 
 # sample_df = pd.read_csv('sample_df.csv')
 def analyze_numerical_columns_with_visuals(df: pd.DataFrame, numerical_columns: list, output_dir: str = "./eda_visuals"):

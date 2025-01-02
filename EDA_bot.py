@@ -8,7 +8,6 @@ import sqlite3
 
 def handle_csv_upload(file):
     try:
-        global sample_df, combined_eda_df
         sample_df = pd.read_csv(file.name)
 
         categorical_columns = sample_df.select_dtypes(include=['object']).columns.tolist()
@@ -21,7 +20,12 @@ def handle_csv_upload(file):
 
         combined_eda_df = combine_eda_reports(
             eda_report_df_categorical, eda_report_df_numerical)
+                # Save the DataFrames to CSV
+        if not os.path.exists('./processed_output'):
+             os.makedirs('./processed_output')
 
+        sample_df.to_csv('./processed_output/sample_df.csv', index=False)
+        combined_eda_df.to_csv('./processed_output/combined_eda_df.csv', index=False)
         db_path = './sql_lite_database.db'
         upload_dataframe_to_sql(sample_df, db_path, 'input_dataframe1')
         upload_dataframe_to_sql(combined_eda_df, db_path, 'report_dataframe1')

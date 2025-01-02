@@ -1,5 +1,6 @@
 .env
-sql_lite_database
+processed_output/
+sql_lite_database/
 
 eda_outputs/
 
