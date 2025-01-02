@@ -12,7 +12,7 @@ from langchain_openai import OpenAI
 from langchain.agents import create_sql_agent
 import sqlite3
 
-sample_df = pd.read_csv('sample_df.csv')
+# sample_df = pd.read_csv('sample_df.csv')
 def analyze_numerical_columns_with_visuals(df: pd.DataFrame, numerical_columns: list, output_dir: str = "./eda_visuals"):
     import os
     os.makedirs(output_dir, exist_ok=True)  # Create directory for visualizations if it doesn't exist
