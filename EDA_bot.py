@@ -39,7 +39,8 @@ def chatbot_interface(query):
     global sample_df, combined_eda_df
     db_path = './sql_lite_database.db'
     try:
-        return get_answer(query)
+        result = get_answer(query)
+        return  result.get('output')
     except Exception as e:
         return f"Error occurred: {e}"
 
